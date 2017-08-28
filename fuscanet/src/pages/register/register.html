@@ -1,0 +1,74 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <form [formGroup]="createForm" (submit)="createUser()" novalidate>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input formControlName="email" type="email" [(ngModel)]="user.email"
+        [class.invalid]="!createForm.controls.email.valid && createForm.controls.email.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" 
+      *ngIf="!createForm.controls.email.valid  && createForm.controls.email.dirty">
+      <p>Please enter a valid email.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input formControlName="password" type="password"  [(ngModel)]="user.password"
+        [class.invalid]="!createForm.controls.password.valid && createForm.controls.password.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" 
+      *ngIf="!createForm.controls.password.valid  && createForm.controls.password.dirty">
+      <p>El password debe tener al menos 6 characters.</p>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input formControlName="nombre" type="nombre" [(ngModel)]="profile.nombre"
+      [class.invalid]="!createForm.controls.nombre.valid && createForm.controls.nombre.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" 
+      *ngIf="!createForm.controls.nombre.valid  && createForm.controls.nombre.dirty">
+      <p>El nombre no puede estar vacio</p>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Apellido</ion-label>
+      <ion-input formControlName="apellido" type="apellido" [(ngModel)]="profile.apellido"
+      [class.invalid]="!createForm.controls.apellido.valid && createForm.controls.apellido.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" 
+      *ngIf="!createForm.controls.apellido.valid  && createForm.controls.apellido.dirty">
+      <p>El apellido no puede estar vacio</p>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Cedula</ion-label>
+      <ion-input formControlName="cedula" type="cedula" type="number" [(ngModel)]="profile.cedula"
+      [class.invalid]="!createForm.controls.cedula.valid && createForm.controls.cedula.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" 
+      *ngIf="!createForm.controls.cedula.valid  && createForm.controls.cedula.dirty">
+      <p>La cedula no es correcta</p>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Cel</ion-label>
+      <ion-input formControlName="cel" type="cel" type="number" [(ngModel)]="profile.cel"
+      [class.invalid]="!createForm.controls.cel.valid && createForm.controls.cel.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" 
+      *ngIf="!createForm.controls.cel.valid  && createForm.controls.cel.dirty">
+      <p>El cel no puede estar vacio</p>
+    </ion-item>
+    <button ion-button block color="secondary" type="submit" [disabled]="!createForm.valid">
+      Solicitar
+    </button>
+
+  </form>
+
+</ion-content>
