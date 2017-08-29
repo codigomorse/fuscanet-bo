@@ -8,8 +8,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let item of allProfiles; let i = index">
-    {{item.nombre}}
-    {{item.apellido}}
-  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let Profile of allProfiles$ | async">
+      <h2>Nombre: {{Profile.nombre}} {{Profile.apellido}}</h2>
+      <h2>Cedula: {{Profile.cedula}}</h2>
+      <h3>Cel: {{Profile.cel}}</h3>
+    </ion-item>
+  </ion-list>
 </ion-content>
