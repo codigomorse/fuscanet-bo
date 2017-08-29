@@ -39,11 +39,12 @@ user = {} as User;
         } else {
           this.afDb.object(`/role/${user.uid}`).subscribe(_data => {
           this.role = _data.value;
-          //console.log(this.role);
+          console.log(this.role);
           if(this.role){
             this.navCtrl.setRoot('Home');  
           }else{
             alert("Su usuario se encuentra pendiente de aprobacion");
+            this.navCtrl.setRoot('Home');  
           }
         });  
           //this.navCtrl.setRoot('Home');

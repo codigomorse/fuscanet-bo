@@ -1,37 +1,35 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,Platform } from 'ionic-angular';
+import firebase from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Profile } from '../../models/profile';
+import { AngularFireDatabase, FirebaseObjectObservable  } from 'angularfire2/database';
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  user={};
+  role={};
+  allProfiles=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
-
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  constructor(private afDb: AngularFireDatabase,private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
+    
+  }
+  ionViewDidLoad() {
+    this.afAuth.authState.subscribe(data => {
+      this.user = data;
+      //console.log(this.user);  
+      this.afDb.list(`/profile/`).subscribe(_data => {
+          //aca tengo todos los perfiles
+          //tengo que cotejar que filtrar solo los q no tienen role
+          //encarar los observables......
+          this.allProfiles = _data;
+          console.log(this.allProfiles);
+      });  
+     });
+    
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    //this.navCtrl.push(ListPage, {
-      //item: item
-    //});
-  }
 }
