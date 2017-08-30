@@ -12,15 +12,24 @@ import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/datab
 export class ListPage {
   user={};
   role={};
-  allProfiles$: FirebaseListObservable<Profile[]>;
+  allProfiles$: FirebaseListObservable<Profile[]>; 
 
   constructor(private afDb: AngularFireDatabase,private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
       this.afAuth.authState.subscribe(data => {
       this.user = data;
       //console.log(this.user);  
-        this.allProfiles$ = this.afDb .list('profile');
-        //this.allProfiles$.subscribe(data => console.log(data));
+      this.allProfiles$ = this.afDb.list('profile');
+      
+      //this.allProfiles$.subscribe(data => console.log(data));
+
      }); 
   }
+    filterByPerfil(profile : Profile) : boolean{
+      if(profile.perfil=="nuevo"){
+        return false;
+      }else{
+        return true;
+      }
+    }
 
 }

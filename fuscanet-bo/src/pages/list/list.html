@@ -9,10 +9,12 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let Profile of allProfiles$ | async">
+    <ion-item *ngFor="let Profile of allProfiles$ | async " [hidden]="filterByPerfil(Profile)">
       <h2>Nombre: {{Profile.nombre}} {{Profile.apellido}}</h2>
       <h2>Cedula: {{Profile.cedula}}</h2>
+      <h3>Mail: {{Profile.correo}}</h3>
       <h3>Cel: {{Profile.cel}}</h3>
+      <h3>Perfil: {{Profile.perfil}}</h3>
     </ion-item>
   </ion-list>
 </ion-content>
