@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let Profile of allProfiles$ | async " [hidden]="filterByPerfil(Profile)">
+    <ion-item *ngFor="let Profile of allProfiles$ | async " [hidden]="filterByPerfil(Profile)" (click)="selectProfile(Profile)">
       <h2>Nombre: {{Profile.nombre}} {{Profile.apellido}}</h2>
       <h2>Cedula: {{Profile.cedula}}</h2>
       <h3>Mail: {{Profile.correo}}</h3>
