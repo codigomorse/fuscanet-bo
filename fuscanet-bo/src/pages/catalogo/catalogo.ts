@@ -42,10 +42,10 @@ export class Catalogo {
   save() {
     //this.viewCtrl.dismiss(this.event);
     console.log(this.event);
-    //this.afAuth.authState.take(1).subscribe(auth => {
-      //this.afDb.object(`events/${this.event.title+" "+this.event.startTime}`).set(this.event).then(() => alert("Se agrego el evento"));
-    //})
-    //this.navCtrl.setRoot('Home');
+    this.afAuth.authState.take(1).subscribe(auth => {
+      this.afDb.object(`events/${this.event.title+" "+this.event.startTime}`).set(this.event).then(() => alert("Se agrego el evento"));
+    })
+    this.navCtrl.setRoot('Home');
   }
   async updatePhoto(): Promise<any>{
     try{
@@ -60,7 +60,7 @@ export class Catalogo {
       this.picurl= savepic.downloadURL;
       this.event.foto = this.picurl;
       this.image = this.picurl;
-      alert(this.picurl);
+      //alert(this.picurl);
     }) 
   }
   uid() {
