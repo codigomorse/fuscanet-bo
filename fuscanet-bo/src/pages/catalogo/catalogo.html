@@ -12,7 +12,15 @@
     <ion-item>
       <ion-input type="text" placeholder="Titulo" [(ngModel)]="event.title"></ion-input>
     </ion-item>
- 
+    
+    <ion-item>
+      <img [src]="image" id="image" (click)="updatePhoto()" />
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea type="text" placeholder="Texto" [(ngModel)]="event.texto"></ion-textarea>
+    </ion-item>
+
     <ion-item>
       <ion-label>Comienzo</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
