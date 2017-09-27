@@ -25,7 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'Menu', component: Home },
       { title: 'Usuarios Pendientes', component: ListPage },
-      { title: 'Catalogo', component: Catalogo },
+      { title: 'Agregar Eventos', component: Catalogo },
     ];
 
   }

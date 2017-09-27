@@ -3,11 +3,33 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Catalogo</ion-title>
+    <ion-title>Agregar Eventos</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content >
-
-
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" placeholder="Titulo" [(ngModel)]="event.title"></ion-input>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>Comienzo</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>Final</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>Todo el dia?</ion-label>
+      <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+ 
+  <button ion-button full icon-left (click)="save()">
+    <ion-icon name="checkmark"></ion-icon> Agregar evento
+  </button>
 </ion-content>
