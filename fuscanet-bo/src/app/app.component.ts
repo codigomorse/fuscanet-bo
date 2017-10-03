@@ -8,6 +8,8 @@ import { Home } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { Catalogo } from '../pages/catalogo/catalogo';
+import { AddNoticia } from '../pages/add-noticia/add-noticia';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -26,6 +28,7 @@ export class MyApp {
       { title: 'Menu', component: Home },
       { title: 'Usuarios Pendientes', component: ListPage },
       { title: 'Agregar Eventos', component: Catalogo },
+      { title: 'Agregar Noticias', component: AddNoticia },
     ];
 
   }

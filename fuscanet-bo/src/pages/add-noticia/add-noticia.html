@@ -1,0 +1,38 @@
+<!--
+  Generated template for the AddNoticia page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>addNoticia</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" placeholder="Titulo" [(ngModel)]="noticia.title"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <img [src]="image" id="image" (click)="updatePhoto()" />
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea type="text" placeholder="Texto" [(ngModel)]="noticia.texto"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="noticia.startTime" [min]="minDate"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <button ion-button full icon-left (click)="save()">
+    <ion-icon name="checkmark"></ion-icon> Agregar noticia
+  </button>
+</ion-content>
