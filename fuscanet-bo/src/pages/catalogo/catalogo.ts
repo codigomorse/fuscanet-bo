@@ -15,7 +15,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class Catalogo {
 
   event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"" };
-  minDate = new Date().toISOString();
+  //minDate = new Date().toISOString();
   image = "assets/img/default.png";
   picdata:any;
   picurl:any;
