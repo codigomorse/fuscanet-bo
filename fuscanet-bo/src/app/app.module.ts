@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { Catalogo } from '../pages/catalogo/catalogo';
 import { AddNoticia } from '../pages/add-noticia/add-noticia';
+import { Convenios } from '../pages/convenios/convenios';
 
 import { AngularFireModule } from 'angularfire2';
 import {FIREBASE_CONFIG} from './app.firebase.config';
@@ -23,7 +24,8 @@ import { Camera } from '@ionic-native/camera';
     LoginPage,
     ListPage,
     Catalogo,
-    AddNoticia
+    AddNoticia,
+    Convenios
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { Camera } from '@ionic-native/camera';
     LoginPage,
     ListPage,
     Catalogo,
-    AddNoticia
+    AddNoticia,
+    Convenios
   ],
   providers: [
     StatusBar,

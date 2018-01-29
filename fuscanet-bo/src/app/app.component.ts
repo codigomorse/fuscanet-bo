@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { Catalogo } from '../pages/catalogo/catalogo';
 import { AddNoticia } from '../pages/add-noticia/add-noticia';
+import { Convenios } from '../pages/convenios/convenios';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +30,7 @@ export class MyApp {
       { title: 'Usuarios Pendientes', component: ListPage },
       { title: 'Agregar Eventos', component: Catalogo },
       { title: 'Agregar Noticias', component: AddNoticia },
+      { title: 'Agregar Convenios', component: Convenios },
     ];
 
   }
