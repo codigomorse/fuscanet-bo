@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Lista de Noticias</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <ion-list>
+        <ion-item *ngFor="let event of allNoticias$ | async ">
+          <p>{{event.title}}</p>
+        </ion-item>
+      </ion-list>
+  </ion-content>

@@ -10,7 +10,10 @@ import { ListPage } from '../pages/list/list';
 import { Catalogo } from '../pages/catalogo/catalogo';
 import { AddNoticia } from '../pages/add-noticia/add-noticia';
 import { Convenios } from '../pages/convenios/convenios';
-
+import { EventList } from '../pages/event-list/event-list';
+import { ConvenioList } from '../pages/convenio-list/convenio-list';
+import { NoticiaList } from '../pages/noticia-list/noticia-list';
+ 
 @Component({
   templateUrl: 'app.html'
 })
@@ -31,6 +34,9 @@ export class MyApp {
       { title: 'Agregar Eventos', component: Catalogo },
       { title: 'Agregar Noticias', component: AddNoticia },
       { title: 'Agregar Convenios', component: Convenios },
+      { title: 'Listar Eventos', component: EventList },
+      { title: 'Listar Noticias', component: NoticiaList },
+      { title: 'Listar Convenios', component: ConvenioList },
     ];
 
   }
