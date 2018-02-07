@@ -22,6 +22,7 @@ export class EventList {
     this.allEvents$ = this.afDb.list('events');
     this.allEvents$.subscribe(data =>{
       this.origEvent = data;
+      this.eventToShow$ = this.origEvent;
     })
     //this.allProfiles$.subscribe(data => console.log(data));
 
