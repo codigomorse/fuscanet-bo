@@ -36,9 +36,10 @@ export class Catalogo {
   }
   ionViewDidLoad(){
     var upload = document.getElementById("myFile");
+    var self = this;
     upload.addEventListener('change', function(e: any){
        var file = e.target.files[0];
-       console.log(file);
+       //console.log(file);
        var d = new Date().getTime();
       var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
         var r = (d + Math.random() * 16) % 16 | 0;
@@ -47,15 +48,15 @@ export class Catalogo {
       });
       var storageRef = firebase.storage().ref(uuid+'/' + file.name);
       storageRef.put(file).then( savepic => {
-          var picurl = savepic.downloadURL;
-          console.log(picurl);
+          var picturl = savepic.downloadURL;
+          console.log(picturl);
+          self.picurl= savepic.downloadURL;
+          self.event.foto = self.picurl;
+          self.image = self.picurl;
       });
     })
   }
-  cancel() {
-    //this.viewCtrl.dismiss();
-  }
- 
+
   save() {
     //this.viewCtrl.dismiss(this.event);
     console.log(this.event);
@@ -64,23 +65,6 @@ export class Catalogo {
     })
     this.navCtrl.setRoot('Home');
   }
-  
-  // async updatePhoto(): Promise<any>{
-  //   try{
-  //     this.picdata = await this.camera.getPicture(this.options);
-  //     this.upload();
-  //   }catch(e){console.log(e)}
-  // }
-  // upload(){
-  //   this.mypicref.child(this.uid()).child('pic.jpeg')
-  //   .putString(this.picdata, 'base64',{contentType:'image/jpeg'})
-  //   .then(savepic =>{
-  //     this.picurl= savepic.downloadURL;
-  //     this.event.foto = this.picurl;
-  //     this.image = this.picurl;
-  //     //alert(this.picurl);
-  //   }) 
-  // }
   
   uid() {
     var d = new Date().getTime();
