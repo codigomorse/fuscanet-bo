@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Content } from 'ionic-angular';
 import * as moment from 'moment';
 import firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -34,7 +34,24 @@ export class Catalogo {
     this.event.endTime = preselectedDate;
     this.mypicref = firebase.storage().ref('/');
   }
- 
+  ionViewDidLoad(){
+    var upload = document.getElementById("myFile");
+    upload.addEventListener('change', function(e: any){
+       var file = e.target.files[0];
+       console.log(file);
+       var storageRef = firebase.storage().ref('/' + file.name);
+       var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+      storageRef.put(file).then( savepic => {
+          var picurl = savepic.downloadURL;
+          console.log(picurl);
+      });
+    })
+  }
   cancel() {
     //this.viewCtrl.dismiss();
   }
@@ -47,22 +64,24 @@ export class Catalogo {
     })
     this.navCtrl.setRoot('Home');
   }
-  async updatePhoto(): Promise<any>{
-    try{
-      this.picdata = await this.camera.getPicture(this.options);
-      this.upload();
-    }catch(e){console.log(e)}
-  }
-  upload(){
-    this.mypicref.child(this.uid()).child('pic.jpeg')
-    .putString(this.picdata, 'base64',{contentType:'image/jpeg'})
-    .then(savepic =>{
-      this.picurl= savepic.downloadURL;
-      this.event.foto = this.picurl;
-      this.image = this.picurl;
-      //alert(this.picurl);
-    }) 
-  }
+  
+  // async updatePhoto(): Promise<any>{
+  //   try{
+  //     this.picdata = await this.camera.getPicture(this.options);
+  //     this.upload();
+  //   }catch(e){console.log(e)}
+  // }
+  // upload(){
+  //   this.mypicref.child(this.uid()).child('pic.jpeg')
+  //   .putString(this.picdata, 'base64',{contentType:'image/jpeg'})
+  //   .then(savepic =>{
+  //     this.picurl= savepic.downloadURL;
+  //     this.event.foto = this.picurl;
+  //     this.image = this.picurl;
+  //     //alert(this.picurl);
+  //   }) 
+  // }
+  
   uid() {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
