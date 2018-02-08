@@ -13,20 +13,38 @@ export class NoticiaList {
 
   user={};
   allNoticias$: FirebaseListObservable<Profile[]>;
+  noticiasToShow$:any ;
+  origEvent:any;
 
   constructor(public alertCtrl: AlertController,private afDb: AngularFireDatabase,private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
     this.afAuth.authState.subscribe(data => {
     this.user = data;
     //console.log(this.user);  
     this.allNoticias$ = this.afDb.list('noticia');
+    this.allNoticias$.subscribe(data =>{
+      this.origEvent = data;
+      this.noticiasToShow$ = this.origEvent;
+    })
     
     //this.allProfiles$.subscribe(data => console.log(data));
 
    }); 
 }
+getItems(ev: any) {
+  // Reset items back to all of the items
+  this.noticiasToShow$ = this.origEvent;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EventList');
+  // set val to the value of the searchbar
+  let val = ev.target.value;
+  //console.log(this.eventToShow$);
+  // if the value is an empty string don't filter the items
+  if (val && val.trim() != '') {
+    this.noticiasToShow$ = this.noticiasToShow$.filter((item) => {
+      //console.log(item.nombre);
+      //console.log(val);
+      return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+    })
   }
+}
 
 }
