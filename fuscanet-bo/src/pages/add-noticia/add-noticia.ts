@@ -31,39 +31,36 @@ export class AddNoticia {
     this.noticia.startTime = preselectedDate;
     this.mypicref = firebase.storage().ref('/');
   }
+  ionViewDidLoad(){
+    var upload = document.getElementById("myFile");
+    var self = this;
+    upload.addEventListener('change', function(e: any){
+       var file = e.target.files[0];
+       //console.log(file);
+       var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+      var storageRef = firebase.storage().ref(uuid+'/' + file.name);
+      storageRef.put(file).then( savepic => {
+          var picturl = savepic.downloadURL;
+          console.log(picturl);
+          self.picurl= savepic.downloadURL;
+          self.noticia.foto = self.picurl;
+          self.image = self.picurl;
+      });
+    })
+  }
   save() {
     //this.viewCtrl.dismiss(this.event);
-    console.log(this.noticia);
+    //console.log(this.noticia);
     console.log(this.noticia);
     //this.afAuth.authState.take(1).subscribe(auth => {
     //  this.afDb.object(`noticia/${this.noticia.title}`).set(this.noticia).then(() => alert("Se agrego la noticia"));
     //})
     this.navCtrl.setRoot('Home');
   }
-  async updatePhoto(): Promise<any>{
-    try{
-      this.picdata = await this.camera.getPicture(this.options);
-      this.upload();
-    }catch(e){console.log(e)}
-  }
-  upload(){
-    this.mypicref.child(this.uid()).child('pic.jpeg')
-    .putString(this.picdata, 'base64',{contentType:'image/jpeg'})
-    .then(savepic =>{
-      this.picurl= savepic.downloadURL;
-      this.noticia.foto = this.picurl;
-      this.image = this.picurl;
-      //alert(this.picurl);
-    }) 
-  }
-  uid() {
-    var d = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
-      var r = (d + Math.random() * 16) % 16 | 0;
-      d = Math.floor(d / 16);
-      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
-    return uuid;
-  }
-
+  
 }

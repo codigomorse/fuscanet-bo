@@ -16,8 +16,11 @@
     </ion-item>
     
     <ion-item>
-      <img [src]="image" id="image" (click)="updatePhoto()" />
-    </ion-item>
+        <img [src]="image" id="image" />
+      </ion-item>
+      <ion-item>
+        <input id="myFile" type="file" accept=".jpg">
+      </ion-item>
 
     <ion-item>
       <ion-textarea type="text" placeholder="Texto" [(ngModel)]="noticia.texto"></ion-textarea>
