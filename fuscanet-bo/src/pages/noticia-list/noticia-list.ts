@@ -46,5 +46,8 @@ getItems(ev: any) {
     })
   }
 }
+selectEvent(event){
+  console.log('seleccionado: ',event);
+}
 
 }
