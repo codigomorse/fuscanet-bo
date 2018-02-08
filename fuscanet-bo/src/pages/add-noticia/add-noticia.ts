@@ -13,7 +13,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class AddNoticia {
 
-  noticia = { startTime: new Date().toISOString(), title: "", foto:"" };
+  noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""] };
   image = "assets/img/default.png";
   picdata:any;
   picurl:any;
@@ -34,9 +34,10 @@ export class AddNoticia {
   save() {
     //this.viewCtrl.dismiss(this.event);
     console.log(this.noticia);
-    this.afAuth.authState.take(1).subscribe(auth => {
-      this.afDb.object(`noticia/${this.noticia.title}`).set(this.noticia).then(() => alert("Se agrego la noticia"));
-    })
+    console.log(this.noticia);
+    //this.afAuth.authState.take(1).subscribe(auth => {
+    //  this.afDb.object(`noticia/${this.noticia.title}`).set(this.noticia).then(() => alert("Se agrego la noticia"));
+    //})
     this.navCtrl.setRoot('Home');
   }
   async updatePhoto(): Promise<any>{
