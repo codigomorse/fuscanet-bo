@@ -32,6 +32,14 @@ export class Convenios {
     this.event.startTime = preselectedDate;
     this.event.endTime = preselectedDate;
     this.mypicref = firebase.storage().ref('/');
+    this.event = this.navParams.get('event');
+    console.log(this.event);
+    if(!this.event){
+      this.event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"" };
+    }else{
+      this.image = this.event.foto;
+    }
+    console.log(this.event);
   }
   ionViewDidLoad(){
     var upload = document.getElementById("myFile");

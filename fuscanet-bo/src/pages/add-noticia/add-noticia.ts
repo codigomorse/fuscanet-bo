@@ -30,6 +30,13 @@ export class AddNoticia {
     let preselectedDate = moment(this.navParams.get('selectedDay')).format();
     this.noticia.startTime = preselectedDate;
     this.mypicref = firebase.storage().ref('/');
+    this.noticia = this.navParams.get('noticia');
+    if(!this.noticia){
+      this.noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""] };
+    }else{
+      this.image = this.noticia.foto;
+    }
+  
   }
   ionViewDidLoad(){
     var upload = document.getElementById("myFile");

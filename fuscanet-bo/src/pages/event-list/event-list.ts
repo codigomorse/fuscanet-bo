@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../models/profile';
 import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/database';
+import { Catalogo } from '../catalogo/catalogo';
 
 @Component({
   selector: 'page-event-list',
@@ -44,6 +45,13 @@ export class EventList {
         return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+  }
+  selectEvent(evento){
+    console.log('seleccionado: ',evento);
+    this.navCtrl.push(Catalogo, {'evento': evento});
+    //let modal = this.modalCtrl.create(AddNoticia,  {'noticia': event});
+      //modal.onDidDismiss((data) => {console.log(data)});
+    //  modal.present();
   }
 
 }

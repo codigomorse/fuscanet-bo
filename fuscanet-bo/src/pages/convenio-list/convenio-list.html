@@ -11,7 +11,7 @@
   <ion-content padding>
       <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar por evento" class="coso"></ion-searchbar>
       <ion-list>
-        <ion-item *ngFor="let event of conveniosToShow$  ">
+        <ion-item *ngFor="let event of conveniosToShow$" (click)="selectEvent(event)">
           <p>{{event.title}}</p>
         </ion-item>
       </ion-list>

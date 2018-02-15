@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,Platform, ModalController } from 'ionic-angular';
 import firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../models/profile';
 import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/database';
+import { AddNoticia } from '../add-noticia/add-noticia';
 
 @Component({
   selector: 'page-noticia-list',
@@ -16,7 +17,7 @@ export class NoticiaList {
   noticiasToShow$:any ;
   origEvent:any;
 
-  constructor(public alertCtrl: AlertController,private afDb: AngularFireDatabase,private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public alertCtrl: AlertController, private modalCtrl:ModalController, private afDb: AngularFireDatabase,private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
     this.afAuth.authState.subscribe(data => {
     this.user = data;
     //console.log(this.user);  
@@ -46,8 +47,12 @@ getItems(ev: any) {
     })
   }
 }
-selectEvent(event){
-  console.log('seleccionado: ',event);
+selectEvent(noticia){
+  console.log('seleccionado: ',noticia);
+  this.navCtrl.push(AddNoticia, {'noticia': noticia});
+  //let modal = this.modalCtrl.create(AddNoticia,  {'noticia': event});
+    //modal.onDidDismiss((data) => {console.log(data)});
+  //  modal.present();
 }
 
 }

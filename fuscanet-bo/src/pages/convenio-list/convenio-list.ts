@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../models/profile';
 import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/database';
+import { Convenios } from '../convenios/convenios';
 
 @Component({
   selector: 'page-convenio-list',
@@ -41,6 +42,13 @@ getItems(ev: any) {
       return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
     })
   }
+}
+selectEvent(event){
+  console.log('seleccionado: ',event);
+  this.navCtrl.push(Convenios, {'event': event});
+  //let modal = this.modalCtrl.create(AddNoticia,  {'noticia': event});
+    //modal.onDidDismiss((data) => {console.log(data)});
+  //  modal.present();
 }
 
 }
