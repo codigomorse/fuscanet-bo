@@ -14,7 +14,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class Catalogo {
 
-  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"" };
+  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"",id: new Date().toISOString() };
   //minDate = new Date().toISOString();
   image = "assets/img/default.png";
   picdata:any;
@@ -35,7 +35,14 @@ export class Catalogo {
     this.mypicref = firebase.storage().ref('/');
     this.event = this.navParams.get('evento');
     if(!this.event){
-      this.event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"" };
+      this.event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"",id: new Date().toISOString() };
+      var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+      this.event.id = uuid;
     }else{
       this.image = this.event.foto;
     }
@@ -67,7 +74,7 @@ export class Catalogo {
     //this.viewCtrl.dismiss(this.event);
     console.log(this.event);
     this.afAuth.authState.take(1).subscribe(auth => {
-      this.afDb.object(`events/${this.event.title+" "+this.event.startTime}`).set(this.event).then(() => alert("Se agrego el evento"));
+      this.afDb.object(`events/${this.event.id}`).set(this.event).then(() => alert("Se agrego el evento"));
     })
     this.navCtrl.setRoot('Home');
   }
