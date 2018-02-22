@@ -14,7 +14,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class Catalogo {
 
-  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"",id: new Date().toISOString() };
+  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"",id: new Date().toISOString(),link:"" };
   //minDate = new Date().toISOString();
   image = "assets/img/default.png";
   picdata:any;
@@ -35,7 +35,7 @@ export class Catalogo {
     this.mypicref = firebase.storage().ref('/');
     this.event = this.navParams.get('evento');
     if(!this.event){
-      this.event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"",id: new Date().toISOString() };
+      this.event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false, title: "", foto:"",id: new Date().toISOString(),link:"" };
       var d = new Date().getTime();
       var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
         var r = (d + Math.random() * 16) % 16 | 0;
