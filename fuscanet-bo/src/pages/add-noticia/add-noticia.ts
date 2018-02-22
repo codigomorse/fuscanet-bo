@@ -13,7 +13,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class AddNoticia {
 
-  noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""] };
+  noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""],id: new Date().toISOString() };
   image = "assets/img/default.png";
   picdata:any;
   picurl:any;
@@ -32,7 +32,14 @@ export class AddNoticia {
     this.mypicref = firebase.storage().ref('/');
     this.noticia = this.navParams.get('noticia');
     if(!this.noticia){
-      this.noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""] };
+      this.noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""],id: new Date().toISOString()};
+      var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+      this.noticia.id=uuid;
     }else{
       this.image = this.noticia.foto;
     }
@@ -65,7 +72,7 @@ export class AddNoticia {
     //console.log(this.noticia);
     
     this.afAuth.authState.take(1).subscribe(auth => {
-      this.afDb.object(`noticia/${this.noticia.title}`).set(this.noticia).then(() => alert("Se agrego la noticia"));
+      this.afDb.object(`noticia/${this.noticia.id}`).set(this.noticia).then(() => alert("Se agrego la noticia"));
     })
     this.navCtrl.setRoot('Home');
   }
