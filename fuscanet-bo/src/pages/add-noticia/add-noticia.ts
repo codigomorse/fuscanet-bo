@@ -13,7 +13,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class AddNoticia {
 
-  noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""],id: new Date().toISOString() };
+  noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""],id: new Date().toISOString(),activa:"",link:""};
   image = "assets/img/default.png";
   picdata:any;
   picurl:any;
@@ -32,7 +32,7 @@ export class AddNoticia {
     this.mypicref = firebase.storage().ref('/');
     this.noticia = this.navParams.get('noticia');
     if(!this.noticia){
-      this.noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""],id: new Date().toISOString()};
+      this.noticia = { startTime: new Date().toISOString(), title: "", foto:"", especialidad: [""],id: new Date().toISOString(),activa:"ACTIVA",link:""};
       var d = new Date().getTime();
       var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
         var r = (d + Math.random() * 16) % 16 | 0;

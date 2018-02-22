@@ -25,7 +25,9 @@
     <ion-item>
       <ion-textarea type="text" placeholder="Texto" [(ngModel)]="noticia.texto"></ion-textarea>
     </ion-item>
-
+    <ion-item>
+        <ion-textarea type="text" placeholder="Link" [(ngModel)]="noticia.link"></ion-textarea>
+      </ion-item>
     <ion-item>
       <ion-label>Fecha</ion-label>
       <ion-input type="datetime-local" [(ngModel)]="noticia.startTime"></ion-input>
@@ -93,7 +95,14 @@
             <ion-option>UROLOGÍA</ion-option>
             
           </ion-select>
-    </ion-item>            
+    </ion-item>  
+    <ion-item>
+        <ion-label>Activa</ion-label>
+          <ion-select [(ngModel)]="noticia.activa" >
+            <ion-option selected="true">ACTIVA</ion-option>
+            <ion-option>INACTIVA</ion-option>
+          </ion-select>
+    </ion-item>                      
   </ion-list>
   <button ion-button full icon-left (click)="save()">
     <ion-icon name="checkmark"></ion-icon> Agregar noticia
