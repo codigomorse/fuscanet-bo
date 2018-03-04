@@ -34,10 +34,10 @@ export class MyApp {
       { title: 'Usuarios Pendientes', component: ListPage },
       { title: 'Agregar Eventos', component: Catalogo },
       { title: 'Agregar Noticias', component: AddNoticia },
-      { title: 'Agregar Convenios', component: Convenios },
+      { title: 'Agregar Beneficios', component: Convenios },
       { title: 'Listar Eventos', component: EventList },
       { title: 'Listar Noticias', component: NoticiaList },
-      { title: 'Listar Convenios', component: ConvenioList },
+      { title: 'Listar Beneficios', component: ConvenioList },
       { title: 'Reportes', component: Reportes },
     ];
 
