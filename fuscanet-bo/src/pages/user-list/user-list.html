@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Todos los Usuarios</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar por correo" class="coso"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItemsCedula($event)" placeholder="Buscar por cedula" type="number" class="coso"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let Profile of profilesToShow$ ">
+      <h2>Nombre: {{Profile.nombre}} {{Profile.apellido}}</h2>
+      <h2>Cedula: {{Profile.cedula}}</h2>
+      <h3>Mail: {{Profile.correo}}</h3>
+      <h3>Cel: {{Profile.cel}}</h3>
+      <h3>Perfil: {{Profile.perfil}}</h3>
+    </ion-item>
+  </ion-list>
+</ion-content>

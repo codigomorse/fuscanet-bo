@@ -36,7 +36,7 @@ export class EventList {
 
     // set val to the value of the searchbar
     let val = ev.target.value;
-    //console.log(this.eventToShow$);
+    console.log(this.eventToShow$);
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.eventToShow$ = this.eventToShow$.filter((item) => {
@@ -46,22 +46,7 @@ export class EventList {
       })
     }
   }
-  getItemsEsp(ev: any) {
-    // Reset items back to all of the items
-    this.eventToShow$ = this.origEvent;
 
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-    //console.log(this.eventToShow$);
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.eventToShow$ = this.eventToShow$.filter((item) => {
-        //console.log(item.nombre);
-        //console.log(val);
-        return (item.especialidad.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
   selectEvent(evento){
     console.log('seleccionado: ',evento);
     this.navCtrl.push(Catalogo, {'evento': evento});
