@@ -15,6 +15,7 @@ import { ConvenioList } from '../pages/convenio-list/convenio-list';
 import { NoticiaList } from '../pages/noticia-list/noticia-list';
 import { Reportes } from '../pages/reportes/reportes';
 import { UserList } from '../pages/user-list/user-list'; 
+import { NoticiasLeidas } from '../pages/noticias-leidas/noticias-leidas';
 
 import { AngularFireModule } from 'angularfire2';
 import {FIREBASE_CONFIG} from './app.firebase.config';
@@ -34,7 +35,8 @@ import { Camera } from '@ionic-native/camera';
     ConvenioList,
     NoticiaList,
     Reportes,
-    UserList
+    UserList,
+    NoticiasLeidas
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { Camera } from '@ionic-native/camera';
     ConvenioList,
     NoticiaList,
     Reportes,
-    UserList
+    UserList,
+    NoticiasLeidas
   ],
   providers: [
     StatusBar,

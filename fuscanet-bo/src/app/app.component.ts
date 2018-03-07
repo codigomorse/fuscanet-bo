@@ -15,6 +15,7 @@ import { ConvenioList } from '../pages/convenio-list/convenio-list';
 import { NoticiaList } from '../pages/noticia-list/noticia-list';
 import { Reportes } from '../pages/reportes/reportes';
 import { UserList } from '../pages/user-list/user-list'; 
+import { NoticiasLeidas } from '../pages/noticias-leidas/noticias-leidas';
  
 @Component({
   templateUrl: 'app.html'
@@ -40,6 +41,7 @@ export class MyApp {
       { title: 'Listar Noticias', component: NoticiaList },
       { title: 'Listar Beneficios', component: ConvenioList },
       { title: 'Listar Usuarios', component: UserList },
+      { title: 'Noticias Leidas', component: NoticiasLeidas },
       { title: 'Reportes', component: Reportes },
     ];
 

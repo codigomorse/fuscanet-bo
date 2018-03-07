@@ -69,12 +69,12 @@ export class AddNoticia {
   }
   save() {
     //this.viewCtrl.dismiss(this.event);
-    //console.log(this.noticia);
+    console.log(this.noticia);
     
     this.afAuth.authState.take(1).subscribe(auth => {
-      this.afDb.object(`noticia/${this.noticia.id}`).set(this.noticia).then(() => alert("Se agrego la noticia"));
+      //this.afDb.object(`noticia/${this.noticia.id}`).set(this.noticia).then(() => alert("Se agrego la noticia"));
     })
-    this.navCtrl.setRoot('Home');
+    //this.navCtrl.setRoot('Home');
   }
   
 }
