@@ -32,6 +32,12 @@ export class NoticiasLeidas {
     console.log('antes ',leidas);
     leidas.forEach(element => {
       this.buscarNoticia(element);
+      let cont = 0;
+      element.forEach(user => {
+        cont ++;
+      });
+      element.contLeido = cont;
+      console.log(element);
     });
     console.log('despues ',leidas);
   }
