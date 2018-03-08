@@ -37,7 +37,7 @@ export class NoticiasLeidas {
         cont ++;
       });
       element.contLeido = cont;
-      console.log(element);
+      //console.log(element);
     });
     console.log('despues ',leidas);
   }
@@ -46,5 +46,5 @@ export class NoticiasLeidas {
     this.afDb.database.ref(`noticia/${clave.$key}`).once('value').then(function(snapshot) {
       clave.title=snapshot.val().title;
     });
-  }
+  } 
 }
