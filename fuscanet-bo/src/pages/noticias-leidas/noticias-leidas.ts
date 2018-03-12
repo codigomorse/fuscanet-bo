@@ -52,4 +52,21 @@ export class NoticiasLeidas {
     //console.log(evento);
     this.navCtrl.push(NoticiasLeidasDetalle, {'noticia': evento});
   }
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.noticiasToShow$ = this.origEvent;
+  
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+    console.log(this.noticiasToShow$);
+    console.log(val);
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.noticiasToShow$ = this.noticiasToShow$.filter((item) => {
+        //console.log(item.nombre);
+        //console.log(val);
+        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
 }
