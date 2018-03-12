@@ -72,7 +72,7 @@ export class Catalogo {
 
   save() {
     //this.viewCtrl.dismiss(this.event);
-    console.log(this.event);
+    //console.log(this.event);
     this.afAuth.authState.take(1).subscribe(auth => {
       this.afDb.object(`events/${this.event.id}`).set(this.event).then(() => alert("Se agrego el evento"));
     })

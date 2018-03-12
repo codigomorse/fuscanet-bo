@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../models/profile';
 import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/database';
+import { NoticiasLeidasDetalle } from '../noticias-leidas-detalle/noticias-leidas-detalle';
 
 @Component({
   selector: 'page-noticias-leidas',
@@ -29,7 +30,7 @@ export class NoticiasLeidas {
   })
   }
   procesarEntrada(leidas){
-    console.log('antes ',leidas);
+    //console.log('antes ',leidas);
     leidas.forEach(element => {
       this.buscarNoticia(element);
       let cont = 0;
@@ -39,7 +40,7 @@ export class NoticiasLeidas {
       element.contLeido = cont;
       //console.log(element);
     });
-    console.log('despues ',leidas);
+    //console.log('despues ',leidas);
   }
   buscarNoticia(clave){
     //console.log(clave);
@@ -47,4 +48,8 @@ export class NoticiasLeidas {
       clave.title=snapshot.val().title;
     });
   } 
+  selectEvent(evento){
+    //console.log(evento);
+    this.navCtrl.push(NoticiasLeidasDetalle, {'noticia': evento});
+  }
 }

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Noticias Leidas Detalle</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar por nombre de noticia" class="coso"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let event of usuarios$" (click)="selectEvent(event)">
+      <p>{{event.nombre}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
