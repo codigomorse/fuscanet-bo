@@ -14,6 +14,7 @@
       <ion-item *ngFor="let event of noticiasToShow$" (click)="selectEvent(event)">
         <p>{{event.title}}</p>
         <p>leido por {{event.contLeido}} usuarios</p>
+        <p>{{event.links}} clicks en link externo</p>
       </ion-item>
     </ion-list>
 

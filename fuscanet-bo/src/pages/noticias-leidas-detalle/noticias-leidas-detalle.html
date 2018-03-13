@@ -11,6 +11,7 @@
 <ion-content padding>
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar por nombre de noticia" class="coso"></ion-searchbar>
   <ion-list>
+    <h4>Leido por:</h4>
     <ion-item *ngFor="let event of usuarios$">
       <p>Nombre:{{event.nombre}}</p>
       <p>Correo:{{event.correo}}</p>
