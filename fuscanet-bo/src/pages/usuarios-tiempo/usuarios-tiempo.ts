@@ -10,12 +10,18 @@ import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/datab
   templateUrl: 'usuarios-tiempo.html',
 })
 export class UsuariosTiempo {
+  user={};
+  role={};
+  allProfiles$: FirebaseListObservable<Profile[]>;
+  profilesToShow$:any;
+  origProfiles:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UsuariosTiempo');
+  constructor(public navCtrl: NavController, public navParams: NavParams,private afDb: AngularFireDatabase,private afAuth:AngularFireAuth) {
+    this.allProfiles$ = this.afDb.list('profile');
+    this.allProfiles$.subscribe(data => {
+      this.origProfiles = data;
+      this.profilesToShow$ = this.origProfiles;  
+    });
   }
 
 }
