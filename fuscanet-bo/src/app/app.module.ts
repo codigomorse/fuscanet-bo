@@ -17,6 +17,7 @@ import { Reportes } from '../pages/reportes/reportes';
 import { UserList } from '../pages/user-list/user-list'; 
 import { NoticiasLeidas } from '../pages/noticias-leidas/noticias-leidas';
 import { NoticiasLeidasDetalle } from '../pages/noticias-leidas-detalle/noticias-leidas-detalle';
+import { UsuariosRegistrados } from '../pages/usuarios-registrados/usuarios-registrados';
 
 import { AngularFireModule } from 'angularfire2';
 import {FIREBASE_CONFIG} from './app.firebase.config';
@@ -38,7 +39,8 @@ import { Camera } from '@ionic-native/camera';
     Reportes,
     UserList,
     NoticiasLeidas,
-    NoticiasLeidasDetalle
+    NoticiasLeidasDetalle,
+    UsuariosRegistrados
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { Camera } from '@ionic-native/camera';
     Reportes,
     UserList,
     NoticiasLeidas,
-    NoticiasLeidasDetalle
+    NoticiasLeidasDetalle,
+    UsuariosRegistrados
   ],
   providers: [
     StatusBar,

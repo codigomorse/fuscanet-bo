@@ -16,6 +16,7 @@ import { NoticiaList } from '../pages/noticia-list/noticia-list';
 import { Reportes } from '../pages/reportes/reportes';
 import { UserList } from '../pages/user-list/user-list'; 
 import { NoticiasLeidas } from '../pages/noticias-leidas/noticias-leidas';
+import { UsuariosRegistrados } from '../pages/usuarios-registrados/usuarios-registrados';
  
 @Component({
   templateUrl: 'app.html'
@@ -34,6 +35,7 @@ export class MyApp {
     this.pages = [
       { title: 'Menu', component: Home },
       { title: 'Usuarios Pendientes', component: ListPage },
+      { title: 'Usuarios Registrados', component: UsuariosRegistrados },
       { title: 'Agregar Eventos', component: Catalogo },
       { title: 'Agregar Noticias', component: AddNoticia },
       { title: 'Agregar Beneficios', component: Convenios },
