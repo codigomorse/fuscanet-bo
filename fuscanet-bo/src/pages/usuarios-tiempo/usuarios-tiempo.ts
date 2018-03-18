@@ -4,18 +4,18 @@ import firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Profile } from '../../models/profile';
 import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/database';
-import { UsuariosTiempo } from '../usuarios-tiempo/usuarios-tiempo';
 
 @Component({
-  selector: 'page-usuarios-registrados',
-  templateUrl: 'usuarios-registrados.html',
+  selector: 'page-usuarios-tiempo',
+  templateUrl: 'usuarios-tiempo.html',
 })
-export class UsuariosRegistrados {
+export class UsuariosTiempo {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  goUsuariosTiempo(){
-    this.navCtrl.push(UsuariosTiempo);
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad UsuariosTiempo');
   }
 
 }
